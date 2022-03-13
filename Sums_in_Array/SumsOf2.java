@@ -18,14 +18,21 @@ public class SumsOf2
         int sum;
         for(int i=0; i<nums.length; i++)
         {
-            for(int j=i+1; j<nums.length; j++)
-            {
-                if((nums[i] + nums[j]) == target)
-                {
-                    targetSums[0] = i;
-                    targetSums[1] = j;
-                }
-            }
+        	if(nums[i] <= target)//This if statement is here to cut down on trips through the array
+        	{
+        		for(int j=i+1; j<nums.length; j++)
+        		{
+        			if((nums[i] + nums[j]) == target)
+        			{
+        				targetSums[0] = i;
+        				targetSums[1] = j;
+        			}
+        		}
+        	}
+        	else
+        	{
+        		i++;
+        	}
         }
         return targetSums;
     }
